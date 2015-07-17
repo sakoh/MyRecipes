@@ -24,6 +24,10 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
+
+gem "carrierwave", "0.10.0"
+gem "mini_magick", "3.8.0"
+
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
@@ -52,4 +56,4 @@ group :production do
   gem 'rails_12factor'
 end
 
- ruby '2.0.0'
+ruby '2.0.0'
