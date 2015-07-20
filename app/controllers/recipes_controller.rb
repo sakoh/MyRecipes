@@ -1,5 +1,5 @@
 class RecipesController < ApplicationController
-  before_action :set_recipe, only: [:show, :edit, :update]
+  before_action :set_recipe, only: [:show, :edit, :update, :like]
   
   def index
     @recipes = Recipe.all
@@ -14,7 +14,7 @@ class RecipesController < ApplicationController
   
   def create
     @recipe = Recipe.new(recipe_params)
-    @recipe.chef = Chef.find(2)
+    @recipe.chef = Chef.first
     
     if @recipe.save
       flash[:success] = "New Recipe created"
@@ -36,6 +36,12 @@ class RecipesController < ApplicationController
     end
   end
   
+  def like
+    Like.create(liked: params[:liked], chef: Chef.first, recipe: @recipe)
+    flash[:sucess] = "Your selection was successful"
+    redirect_to :back
+  end
+
   private
     def set_recipe
       @recipe = Recipe.find(params[:id])

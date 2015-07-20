@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150717193150) do
+ActiveRecord::Schema.define(version: 20150717230614) do
 
   create_table "chefs", force: true do |t|
     t.string   "chefname"
@@ -19,6 +19,17 @@ ActiveRecord::Schema.define(version: 20150717193150) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "likes", force: true do |t|
+    t.integer  "recipe_id"
+    t.integer  "chef_id"
+    t.boolean  "liked"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "likes", ["chef_id"], name: "index_likes_on_chef_id"
+  add_index "likes", ["recipe_id"], name: "index_likes_on_recipe_id"
 
   create_table "recipes", force: true do |t|
     t.string   "name"
